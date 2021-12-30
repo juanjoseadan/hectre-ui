@@ -70,19 +70,27 @@ const useFetching = (limit: number, offset: number) => {
 
 const Chemicals = () => {
 	const classes = useStyles();
+	const dispatch = useDispatch();
 	const [isAddChemicalOpen, setIsAddChemicalOpen] = useState(false);
-	const chemicals = useSelector((state: RootState) => state.chemicals.chemicals);
-	const total = useSelector((state: RootState) => state.chemicals.total);
+	// const chemicals = useSelector((state: RootState) => state.chemicals.chemicals);
+	// const total = useSelector((state: RootState) => state.chemicals.total);
+
+	const {
+		limit,
+		offset,
+		total,
+		chemicals,
+	} = useSelector((state: RootState) => state.chemicals);
 
 	// Get the initial page...
-	useFetching(10, 0);
+	useFetching(limit, offset);
 	
 	useEffect(() => {
-	}, [total, chemicals]);
+	}, [total, chemicals, limit, offset]);
 
 	const onAddChemicalClose = (success: boolean) => {
 		if (success) {
-			
+			dispatch(getChemicals(limit, offset));
 		}
 
 		setIsAddChemicalOpen(false);

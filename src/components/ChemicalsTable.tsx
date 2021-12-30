@@ -10,6 +10,10 @@ import {
 import { Chemical } from '../models/chemical';
 
 const useStyles = makeStyles({
+	tableContainer: {
+		maxHeight: (window.innerHeight - 64 - 32 - 61),
+		overflowY: 'scroll',
+	},
 	table: {
 
 	},
@@ -48,7 +52,7 @@ const ChemicalsTable = (props: IChemicalsTableProps) => {
 	const classes = useStyles();
 
 	return (
-		<TableContainer style={{ maxHeight: (window.innerHeight - 64 - 32 - 61 - 101), overflowY: 'scroll' }}>
+		<TableContainer className={classes.tableContainer}>
 			<Table stickyHeader className={classes.table}>
 				<TableHead>
 					<TableRow>

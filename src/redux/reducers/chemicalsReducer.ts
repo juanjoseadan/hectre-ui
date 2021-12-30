@@ -15,8 +15,8 @@ type ChemicalsState = {
 	count: number;
 	total: number;
 	links: Link[];
-	pageSize: number;
-	currentPage: number;
+	limit: number;
+	offset: number;
 };
 
 const initialState: ChemicalsState = {
@@ -26,8 +26,8 @@ const initialState: ChemicalsState = {
 	count: 0,
 	total: 0,
 	links: [],
-	pageSize: 10,
-	currentPage: 0,
+	limit: 10,
+	offset: 0,
 };
 
 export const chemicalsReducer: Reducer<ChemicalsState, ActionType> = (state = initialState, action: ActionType) => {
@@ -74,10 +74,11 @@ export const chemicalsReducer: Reducer<ChemicalsState, ActionType> = (state = in
 				error: action.payload,
 			};
 
-		case ChemicalActionTypes.CHANGE_PAGE_SIZE:
+		case ChemicalActionTypes.SET_PAGINATION:
 			return {
 				...state,
-				pageSize: action.payload,
+				limit: action.payload.limit,
+				offset: action.payload.offset,
 			}
 		default:
 			return state;

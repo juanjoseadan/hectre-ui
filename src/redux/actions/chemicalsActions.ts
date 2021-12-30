@@ -63,9 +63,12 @@ export const createChemical = (request: any) => {
 	};
 };
 
-export const changePageSize = (pageSize: number) => {
+export const setPagination = (limit: number, offset: number) => {
 	return {
-		type: ChemicalActionTypes.CHANGE_PAGE_SIZE,
-		payload: pageSize,
+		type: ChemicalActionTypes.SET_PAGINATION,
+		payload: {
+			limit,
+			offset,
+		},
 	};
 };

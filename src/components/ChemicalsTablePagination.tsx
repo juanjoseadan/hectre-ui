@@ -13,7 +13,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/rootReducer';
 import React, { useEffect, useState } from 'react';
-import { getChemicals } from '../redux/actions/chemicalsActions';
+import { getChemicals, setPagination } from '../redux/actions/chemicalsActions';
 
 const useStyles = makeStyles({
 	container: {
@@ -78,7 +78,8 @@ const ChemicalsTablePagination = () => {
 	useEffect(() => {
 		const updateChemicals = () => {
 			const offset = pageSize * (currentPage - 1);
-			dispatch(getChemicals(pageSize, offset))
+			dispatch(getChemicals(pageSize, offset));
+			dispatch(setPagination(pageSize, offset));
 		};
 
 		const _pages = Math.ceil(total / pageSize);

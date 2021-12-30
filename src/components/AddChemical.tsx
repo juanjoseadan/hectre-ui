@@ -81,15 +81,16 @@ const useStyles = makeStyles({
 	},
 });
 
+const emptyChemical: ChemicalRequest = {
+	chemicalType: '',
+	activeIngredient: '',
+	name: '',
+	preHarvestInterval: '',
+};
+
 const AddChemical = (props: IAddChemicalProps) => {
 	const classes = useStyles();
-	const dispatch = useDispatch();
-	const [chemical, setChemical] = useState<ChemicalRequest>({
-		chemicalType: '',
-		activeIngredient: '',
-		name: '',
-		preHarvestInterval: '',
-	});
+	const [chemical, setChemical] = useState<ChemicalRequest>(emptyChemical);
 
 	const handleCancel = () => {
 		props.onClose(false);
@@ -104,7 +105,9 @@ const AddChemical = (props: IAddChemicalProps) => {
 			const url = `api/v1/chemicals`;
 			
 			await HttpClient.post(url, chemical);
-
+			
+			setChemical(emptyChemical);
+			
 			props.onClose(true);
 		} catch (error) {
 			console.error(error);
