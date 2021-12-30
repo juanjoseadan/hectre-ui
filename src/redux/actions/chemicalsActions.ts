@@ -8,7 +8,6 @@ export const getChemicalsRequest = () => {
 };
 
 export const getChemicals = (limit: number = 10, offset: number = 0) => {
-	console.log('getChemicals limit: ' + limit + ' offset: ' + offset)
 	return (dispatch: any) => {
 		dispatch(getChemicalsRequest());
 
