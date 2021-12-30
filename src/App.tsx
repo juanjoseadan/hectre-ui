@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Container } from '@material-ui/core';
+import Header from './components/Header';
+import Chemicals from './components/Chemicals';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+	rootContainer: {
+		width: '100%',
+		maxWidth: '100%',
+		height: window.innerHeight - 64,
+		maxHeight: '100%',
+		backgroundColor: '#f8f8f8',
+	},
+	contentContainer: {
+		marginTop: 64,
+		padding: 16,
+	},
+});
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const classes = useStyles();
+
+	return (
+		<div className={classes.rootContainer}>
+			<Header />
+
+			<Container maxWidth="xl" className={classes.contentContainer}>
+				<Chemicals />
+			</Container>
+		</div>
+	);
 }
 
 export default App;
