@@ -24,8 +24,12 @@ const useStyles = makeStyles({
 	container: {
 		display: 'flex',
 		justifyContent: 'end',
-		padding: '36px 0',
+		padding: 0,
 		alignItems: 'center',
+		position: 'absolute',
+		zIndex: 100,
+		bottom: 24,
+		right: 24,
 	},
 	navButton: {
 		border: '1px solid #E0E0E0',

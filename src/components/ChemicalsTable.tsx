@@ -19,6 +19,7 @@ const useStyles = makeStyles({
 		borderBottom: 'none',
 		fontWeight: 700,
 		paddingLeft: 100,
+		backgroundColor: '#fff',
 	},
 	dataRow: {
 		height: 58,

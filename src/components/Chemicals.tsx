@@ -47,6 +47,14 @@ const useStyles = makeStyles({
 		display: 'flex',
 		textTransform: 'none',
 		fontSize: 16,
+		color: '#DF1D00',
+		fontWeight: 700,
+	},
+	tableContainer: {
+		display: 'flex',
+		flexDirection: 'column',
+		padding: 0,
+		height: (window.innerHeight - 64 - 32),
 	},
 });
 
@@ -85,10 +93,12 @@ const Chemicals = () => {
 					Add new chemicals
 				</Button>
 			</Container>
-			
-			<ChemicalsTable rows={chemicals} />
 
-			<ChemicalsTablePagination />
+			<Container maxWidth="xl" className={classes.tableContainer}>
+				<ChemicalsTable rows={chemicals} />
+
+				<ChemicalsTablePagination />
+			</Container>
 		</Container>
 	);
 };
