@@ -8,3 +8,10 @@ export type Chemical = {
 	modificationDate: Date | null;
 	deletionDate: Date | null;
 };
+
+export type ChemicalRequest = {
+	chemicalType: string;
+	activeIngredient: string;
+	name: string;
+	preHarvestInterval: string;
+};

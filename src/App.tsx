@@ -1,7 +1,8 @@
 import { Container } from '@material-ui/core';
 import Header from './components/Header';
 import Chemicals from './components/Chemicals';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
 	rootContainer: {
@@ -17,17 +18,29 @@ const useStyles = makeStyles({
 	},
 });
 
+const palette = {
+	primary: {
+		main: '#DF1D00'
+	},
+};
+
+const theme = createMuiTheme({
+	palette,
+});
+
 function App() {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.rootContainer}>
-			<Header />
+		<ThemeProvider theme={theme}>
+			<div className={classes.rootContainer}>
+				<Header />
 
-			<Container maxWidth="xl" className={classes.contentContainer}>
-				<Chemicals />
-			</Container>
-		</div>
+				<Container maxWidth="xl" className={classes.contentContainer}>
+					<Chemicals />
+				</Container>
+			</div>
+		</ThemeProvider>
 	);
 }
 

@@ -9,8 +9,9 @@ import {
 	Container,
 } from '@material-ui/core';
 import { RootState } from '../redux/rootReducer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getChemicals } from '../redux/actions/chemicalsActions';
+import AddChemical from './AddChemical';
 
 const useStyles = makeStyles({
 	container: {
@@ -69,6 +70,7 @@ const useFetching = (limit: number, offset: number) => {
 
 const Chemicals = () => {
 	const classes = useStyles();
+	const [isAddChemicalOpen, setIsAddChemicalOpen] = useState(false);
 	const chemicals = useSelector((state: RootState) => state.chemicals.chemicals);
 	const total = useSelector((state: RootState) => state.chemicals.total);
 
@@ -77,6 +79,14 @@ const Chemicals = () => {
 	
 	useEffect(() => {
 	}, [total, chemicals]);
+
+	const onAddChemicalClose = (success: boolean) => {
+		if (success) {
+			
+		}
+
+		setIsAddChemicalOpen(false);
+	};
 
 	return (
 		<Container maxWidth="xl" className={classes.container}>
@@ -89,6 +99,7 @@ const Chemicals = () => {
 				<Button
 					className={classes.addChemicalsButton}
 					startIcon={<AddIcon />}
+					onClick={() => setIsAddChemicalOpen(true)}
 				>
 					Add new chemicals
 				</Button>
@@ -99,6 +110,11 @@ const Chemicals = () => {
 
 				<ChemicalsTablePagination />
 			</Container>
+
+			<AddChemical
+				isOpen={isAddChemicalOpen}
+				onClose={onAddChemicalClose}
+			/>
 		</Container>
 	);
 };

@@ -82,8 +82,7 @@ const ChemicalsTablePagination = () => {
 		};
 
 		const _pages = Math.ceil(total / pageSize);
-		console.log('pages', _pages)
-		console.log('total', total)
+		
 		setPages(_pages);
 		updateChemicals();
 	}, [total, pageSize, currentPage, setPages]);
